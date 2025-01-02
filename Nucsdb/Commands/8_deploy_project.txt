@@ -1,0 +1,8 @@
+gcloud run deploy nucsdb `
+    --image gcr.io/articulate-bot-446614-m9/nucsdb `
+    --platform managed `
+    --memory=1Gi `
+    --region us-central1 `
+    --allow-unauthenticated `
+    --vpc-connector cloud-run-connector `
+    --vpc-egress all

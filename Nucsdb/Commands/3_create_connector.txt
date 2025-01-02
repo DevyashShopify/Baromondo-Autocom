@@ -1,0 +1,5 @@
+gcloud compute networks vpc-access connectors create cloud-run-connector `
+    --region us-central1 `
+    --range 10.8.0.0/28 `
+    --min-instances 2 `
+    --max-instances 3
