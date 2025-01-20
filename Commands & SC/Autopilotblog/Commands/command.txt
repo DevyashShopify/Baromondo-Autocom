@@ -1,0 +1,35 @@
+*
+*
+gcloud auth login
+*
+*
+gcloud config set project project-id
+*
+*
+gcloud compute networks vpc-access connectors create cloud-run-connector `
+    --region us-central1 `
+    --range 10.8.0.0/28 `
+    --min-instances 2 `
+    --max-instances 3
+*
+*
+pip3 freeze > requirements.txt
+*
+*
+docker build -t gcr.io/project-id/autopilotblog .
+*
+*
+gcloud auth configure-docker
+*
+*
+docker push gcr.io/project-id/autopilotblog:latest
+*
+*
+gcloud run deploy nucsdb `
+    --image gcr.io/project-id/autopilotblog `
+    --platform managed `
+    --memory=1Gi `
+    --region us-central1 `
+    --allow-unauthenticated `
+    --vpc-connector cloud-run-connector `
+    --vpc-egress all
