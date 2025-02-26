@@ -16,17 +16,17 @@ gcloud compute networks vpc-access connectors create cloud-run-connector `
 pip3 freeze > requirements.txt
 *
 *
-docker build -t gcr.io/autopilotblog-20012025/autopilotblog .
+docker build -t gcr.io/writeon-11-02-2025/writeon .
 *
 *
 gcloud auth configure-docker
 *
 *
-docker push gcr.io/autopilotblog-20012025/autopilotblog:latest
+docker push gcr.io/writeon-11-02-2025/writeon:latest
 *
 *
-gcloud run deploy autopilotblog `
-    --image gcr.io/autopilotblog-20012025/autopilotblog `
+gcloud run deploy writeon `
+    --image gcr.io/writeon-11-02-2025/writeon `
     --platform managed `
     --memory=1Gi `
     --region us-central1 `
