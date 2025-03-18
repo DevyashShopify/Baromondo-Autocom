@@ -1,5 +1,5 @@
-gcloud run deploy nucsdb `
-    --image gcr.io/articulate-bot-446614-m9/nucsdb `
+gcloud run deploy leafsense `
+    --image gcr.io/articulate-bot-446614-m9/leafsense `
     --platform managed `
     --memory=1Gi `
     --region us-central1 `
