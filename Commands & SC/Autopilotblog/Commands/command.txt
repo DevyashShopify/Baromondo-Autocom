@@ -3,7 +3,7 @@
 gcloud auth login
 *
 *
-gcloud config set project autopilotblog-20012025
+gcloud config set project writeon-02-05-2025
 *
 *
 gcloud compute networks vpc-access connectors create cloud-run-connector `
@@ -16,20 +16,30 @@ gcloud compute networks vpc-access connectors create cloud-run-connector `
 pip3 freeze > requirements.txt
 *
 *
-docker build -t gcr.io/writeon-11-02-2025/writeon .
+docker build -t gcr.io/writeon-02-05-2025/writeon .
 *
 *
 gcloud auth configure-docker
 *
 *
-docker push gcr.io/writeon-11-02-2025/writeon:latest
+docker push gcr.io/writeon-02-05-2025/writeon:latest
 *
 *
 gcloud run deploy writeon `
-    --image gcr.io/writeon-11-02-2025/writeon `
+    --image gcr.io/writeon-02-05-2025/writeon `
     --platform managed `
     --memory=1Gi `
     --region us-central1 `
     --allow-unauthenticated `
     --vpc-connector cloud-run-connector `
     --vpc-egress all
+
+
+
+
+
+**This is a command to backup already commited database
+pg_dump -h previous-host -U previous-user -d previous-database -Fc -f backup.dump
+
+**This is the command to restore already commited database to your newly setup database
+pg_restore -h target-host -U target-user -d target-database -Fc backup.dump
